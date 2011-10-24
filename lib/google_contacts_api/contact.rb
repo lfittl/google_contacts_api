@@ -34,7 +34,7 @@ module GoogleContactsApi
       return nil unless @api && photo_link
       response = @api.oauth.get(photo_link)
       
-      case response.code
+      case defined?(response.code) ? response.code : response.status
       # maybe return a placeholder instead of nil
       when 400; return nil
       when 401; return nil

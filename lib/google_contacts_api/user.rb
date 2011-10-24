@@ -22,7 +22,7 @@ module GoogleContactsApi
       # response = @api.get(url, params)
       response = @api.get(url, params, {"GData-Version" => "2"})
 
-      case response.code
+      case defined?(response.code) ? response.code : response.status
       when 401; raise
       when 403; raise
       when 404; raise
